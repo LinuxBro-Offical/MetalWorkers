@@ -1,0 +1,78 @@
+<!-- Newsletter Start -->
+<div class="container-fluid newsletter mt-6 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container pb-5">
+        <div class="bg-white p-5 mb-5">
+            <div class="row g-5">
+                <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
+                    <h1 class="display-6 text-uppercase mb-4">Newsletter</h1>
+                    <div class="d-flex">
+                        <i class="far fa-envelope-open fa-3x text-primary me-4"></i>
+                        <p class="fs-5 fst-italic mb-0">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore lorem ipsum.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 wow fadeIn" data-wow-delay="0.5s">
+                    <form id="newsletterForm">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control border-0 bg-light" id="mail" name="email" placeholder="Your Email" required>
+                            <label for="mail">Your Email</label>
+                        </div>
+                        <button class="btn btn-primary w-100 py-3" type="submit">Submit Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Newsletter Start -->
+
+<div id="newsletterToaster" class="toaster-notification"></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterToaster = document.getElementById('newsletterToaster');
+
+        function showNewsletterToaster(message, isError = false) {
+            newsletterToaster.textContent = message;
+            newsletterToaster.style.backgroundColor = isError ? '#dc3545' : '#28a745';
+            newsletterToaster.classList.add('show');
+            setTimeout(() => {
+                newsletterToaster.classList.remove('show');
+            }, 3000);
+        }
+
+        newsletterForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const emailInput = document.getElementById('mail');
+            const email = emailInput.value;
+
+            // Client-side email validation
+            if (!email || !emailInput.checkValidity()) {
+                showNewsletterToaster('Please enter a valid email address.', true);
+                return;
+            }
+
+            try {
+                const response = await fetch('/newsletter/subscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: email })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || 'Failed to subscribe to newsletter');
+                }
+
+                showNewsletterToaster('Successfully subscribed to our newsletter!');
+                newsletterForm.reset();
+            } catch (error) {
+                console.error('Error subscribing to newsletter:', error);
+                showNewsletterToaster(error.message || 'Failed to subscribe. Please try again.', true);
+            }
+        });
+    });
+</script> 

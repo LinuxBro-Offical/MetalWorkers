@@ -16,3 +16,5 @@ venv/
 .env.local
 node_modules/ 
 my_questions.md
+logs/
+metalworkers.db

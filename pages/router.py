@@ -1,3 +1,4 @@
 from fastapi import APIRouter
 
-router = APIRouter(prefix="/pages", tags=["pages"]) 
+router = APIRouter(prefix="", tags=["pages"]) 
+ 
