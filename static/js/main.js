@@ -42,6 +42,7 @@
     
     
     // Back to top button
+    /*
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
             $('.back-to-top').fadeIn('slow');
@@ -52,6 +53,20 @@
     $('.back-to-top').click(function () {
         $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
         return false;
+    });
+    */
+
+    // Smooth scroll for "Get A Quote" button
+    $('a.btn-primary[href="#appointment"]').on('click', function(event) {
+        if (this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 800, function() { // Reduced scroll time to 800ms
+                window.location.hash = hash;
+            });
+        }
     });
 
 

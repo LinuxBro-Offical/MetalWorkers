@@ -1,8 +1,53 @@
-/********** Template CSS **********/
+.whatsapp-float {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 40px;
+    bottom: 60px;
+    z-index: 99;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: heartbeatGlow 2s infinite;
+}
+
+@keyframes heartbeatGlow {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 0 rgba(37, 211, 102, 0);
+    }
+    25% {
+        transform: scale(1.15);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35), 0 0 15px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 0 rgba(37, 211, 102, 0);
+    }
+    75% {
+        transform: scale(1.15);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35), 0 0 15px rgba(37, 211, 102, 0.4);
+    }
+}
+
+
+
+.whatsapp-float:hover {
+    background-color: #1DA851; /* Darker green on hover */
+    color: white;
+    transform: scale(1.1); /* Grow effect on hover */
+}
 
 .back-to-top {
     position: fixed;
-    display: none;
+    display: none; /* Changed from 'none' to 'hidden' to make the button not take up space */
     right: 30px;
     bottom: 30px;
     z-index: 99;
@@ -116,7 +161,7 @@
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
-    color: var(--bs-primary);
+    color: #496670;
 }
 
 .navbar .dropdown-toggle::after {
@@ -288,6 +333,7 @@
 .feature {
     background: linear-gradient(to right, rgba(0, 0, 0, .1), rgba(0, 0, 0, 1) 50%), url(../img/carousel-1.jpg) left center no-repeat;
     background-size: cover;
+    padding-bottom: 2rem !important;
 }
 
 .feature-row {
@@ -336,6 +382,10 @@
     transition: 3s;
 }
 
+.experience {
+    border-bottom: 1px solid var(--bs-primary);
+    margin-bottom: 25px;
+}
 
 /*** Service ***/
 .service .service-item {
@@ -359,7 +409,7 @@
     left: 0;
     bottom: 0;
     transition: 1s;
-    background: var(--bs-primary);
+    background: #496670;
 }
 
 .service .service-inner:hover::before {
@@ -552,12 +602,12 @@
     content: "\f105";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    color: var(--bs-primary);
+    color: #496670;
     margin-right: 10px;
 }
 
 .footer .btn.btn-link:hover {
-    color: var(--bs-primary);
+    color: #496670;
     letter-spacing: 1px;
     box-shadow: none;
 }
