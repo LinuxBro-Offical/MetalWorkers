@@ -11,3 +11,8 @@ templates = Jinja2Templates(directory=settings.TEMPLATES_DIR)
 async def root_page(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
  
+
+@router.get("/about", response_class=HTMLResponse)
+async def about(request: Request):
+    return templates.TemplateResponse("about.html", {"request": request}) 
+ 
