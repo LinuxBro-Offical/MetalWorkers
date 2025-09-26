@@ -9,12 +9,12 @@ A FastAPI application serving the frontend, paired with a Django project for adm
 - Python 3.8+ (ensure your `venv` is set up with a compatible version)
 - `pip` for dependency management
 
-### 2. Setup (Run these commands from `/home/ananthu/Development/MetalWorkers/metalworkers-api`)
+### 2. Setup (Run these commands from `MetalWorkers/metalworkers-api`)
 
 1.  **Activate Virtual Environment**: If you don't have one, create it (`python -m venv venv`) then activate it.
 
     ```bash
-    source /home/ananthu/Development/MetalWorkers/venv/bin/activate
+    source MetalWorkers/venv/bin/activate
     ```
 
 2.  **Install Dependencies**:
@@ -50,7 +50,7 @@ Open **two separate terminal windows** (ensure your virtual environment is activ
 #### Terminal Window 1: Run FastAPI Application
 
 ```bash
-cd /home/ananthu/Development/MetalWorkers/metalworkers-api
+cd MetalWorkers/metalworkers-api
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 *   **Access FastAPI Frontend/APIs**: `http://localhost:8000/`
@@ -59,7 +59,7 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 #### Terminal Window 2: Run Django Admin Panel
 
 ```bash
-cd /home/ananthu/Development/MetalWorkers/metalworkers-api
+cd MetalWorkers/metalworkers-api
 gunicorn admin_panel.wsgi:application --bind 0.0.0.0:8001
 # Alternatively, for simpler local dev:
 # python manage.py runserver 8001
@@ -321,7 +321,7 @@ Nginx will serve your application on standard web ports (80/443) and manage SSL,
 
 #### 8. Final Check
 
-*   Navigate to `https://your_domain.com/` and `https://your_domain.com/admin/` in your browser. Both should now be accessible and secure.
+*   Navigate to `https://metalworkers.com/` and `https://metalworkers.com/admin/` in your browser. Both should now be accessible and secure.
 
 ***
 
